@@ -1,0 +1,26 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h2 class="panel-title">Forums</h2>
+  </div>
+
+  <div class="panel-body">
+    <table class="table">
+      <tbody>
+      <% 
+      ind =0
+      @forums.each do |ff|
+      ind +=1 
+      %>
+        <tr>
+         
+          <td>
+          id:<%= ind %> 
+            <%= ff %>
+          </td>
+         
+        <tr>
+      <% end %>
+      <tbody>
+    </table>
+   </div>
+</div>

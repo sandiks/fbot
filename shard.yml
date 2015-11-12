@@ -1,0 +1,14 @@
+name: fbot2
+version: 0.1.0
+
+dependencies:
+  sqlite3:
+    github: manastech/crystal-sqlite3
+  pg:
+    github: will/crystal-pg
+  amatista:
+    github: werner/amatista
+  mime:
+    github: spalger/crystal-mime
+
+license: MIT
