@@ -4,8 +4,10 @@ require "pg"
 require "json"
 require "./src/view_models/**"
 require "./src/models/*"
+require "./src/helpers/*"
 require "./src/controllers/*"
 require "option_parser"
+require "redis"
 
 class Main < Amatista::Base
   configure do |conf|
@@ -15,3 +17,8 @@ class Main < Amatista::Base
     conf[:logs] = true
   end
 end
+
+redis = Redis.new
+puts "put into redis"
+forums = [{"forum": " forum title"}]*100
+redis.set("forums", forums)

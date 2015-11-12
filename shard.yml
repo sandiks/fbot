@@ -10,5 +10,5 @@ dependencies:
     github: werner/amatista
   mime:
     github: spalger/crystal-mime
-
-license: MIT
+  redis:
+    github: stefanwille/crystal-redis

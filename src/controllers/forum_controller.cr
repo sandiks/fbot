@@ -6,10 +6,9 @@ class ForumsController < ApplicationController
 
   get "/site/:sid/forums" do |params|
     unless params.empty?
-      # forums = Forum.site_forums(params["sid"])
+      forums = Forum.site_forums(params["sid"])
       # ff = ["id", "forum title"]
-      ff = {"forum": " forum title"}
-      forums = [ff]*10
+      # forums = [{"forum": " forum title"}]*100
       respond_to(:html, ForumsIndexView.new(forums).set_view)
     else
       forums = Forum.all
