@@ -4,9 +4,9 @@ class LayoutView < Amatista::BaseView
 
   def logout
     form_tag("/sessions/destroy") do |form|
-      form << content_tag(:div, 
-                          submit_tag("Logout", { class: "btn btn-success" }),
-                          { class: "col-xs-6" })
+      form << content_tag(:div,
+        submit_tag("Logout", {class: "btn btn-success"}),
+        {class: "col-xs-6"})
     end
   end
 

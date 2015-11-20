@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Todo App</title>
+    <title>FBot app</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/src/assets/stylesheets/bootstrap-theme.min.css" media="all">
     <link rel="stylesheet" type="text/css" href="/src/assets/stylesheets/bootstrap.min.css" media="all">
@@ -21,13 +21,15 @@
       </div>
       <div class="row">
         <div class="col-xs-6">
+          <a href='/rsn/forums'>rsdn.ru</a>
+          <a href='/lor/forums'>lor</a>
         </div>
         <div class="col-xs-6">
           <%= logout if logged_in? %>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-12">
           <%= @include %>
         </div>
       </div>

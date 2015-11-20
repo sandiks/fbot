@@ -1,0 +1,22 @@
+<table style="width:100%;">
+  <tr>
+    <th style="width:10%">Ответов</th>
+    <th style="width:15%">Дата</th>
+    <th>Тема</th>
+  <tr>
+     <% @threads.each do |thr| %>
+    <tr>
+      <td style="text-align:center"><%= thr[5] %></td>
+      <td style="text-align:center" class="altCol"><%= thr[4].to_s("%Y-%m-%d %H:%M") %></td>
+      <td>
+      <% link = case @sid 
+      when 2 
+        "http://rsdn.ru/forum/#{@fname}/#{thr[2]}.flat.1" 
+      when 3 
+        "http://www.linux.org.ru/forum/#{@fname}/#{thr[2]}" 
+      end %>
+        <a href='<%= link %>'><%= thr[3] %></a>
+      </td>
+    </tr>
+    <% end %>
+</table>

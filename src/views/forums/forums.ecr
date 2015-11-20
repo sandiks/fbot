@@ -1,0 +1,19 @@
+<table style="width:90%;">
+  <tr>
+  <td valign="top">
+  <ul>
+
+    <% @forums.select{|f| f[3]==0}.each do |f| %>
+    <li>
+    <b><%= f[2] %> </b>:
+      
+        <% @forums.select{|subf| subf[4]==f[1]}.each do |subf| %>
+          <a href="/rsn/forum/<%= subf[1] %>"><%= subf[2] %></a>
+        <% end %>
+      
+    <% end %>
+    </li>
+  </ul>
+  </td>
+  </tr>
+</table>
