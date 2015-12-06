@@ -1,3 +1,7 @@
+
+<%= ForumsNavView.new(@sid, @forums) %>
+<br/>
+<b><%= @fname %></b>
 <table style="width:100%;">
   <tr>
     <th style="width:10%">Ответов</th>
@@ -9,12 +13,7 @@
       <td style="text-align:center"><%= thr[5] %></td>
       <td style="text-align:center" class="altCol"><%= thr[4].to_s("%Y-%m-%d %H:%M") %></td>
       <td>
-      <% link = case @sid 
-      when 2 
-        "http://rsdn.ru/forum/#{@fname}/#{thr[2]}.flat.1" 
-      when 3 
-        "http://www.linux.org.ru/forum/#{@fname}/#{thr[2]}" 
-      end %>
+      <% link = ForumHelper.get_thread_link(@sid,@fname,thr[2])%>
         <a href='<%= link %>'><%= thr[3] %></a>
       </td>
     </tr>

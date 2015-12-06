@@ -17,8 +17,3 @@ class Main < Amatista::Base
     conf[:logs] = true
   end
 end
-
-redis = Redis.new
-puts "put into redis"
-forums = [{"forum": " forum title"}]*100
-redis.set("forums", forums)
