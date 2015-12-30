@@ -26,11 +26,18 @@ class ForumsListView < Amatista::BaseView
   set_ecr "forums/list"
 end
 
-class GroupedForumsView < Amatista::BaseView
+class GroupedAllThreadsView < Amatista::BaseView
   def initialize(@mforums, @mforums_threads)
   end
 
-  set_ecr "forums/grouped_forums"
+  set_ecr "forums/grouped_all_threads"
+end
+
+class GroupedThreadsView < Amatista::BaseView
+  def initialize(@site_group, @group_threads)
+  end
+
+  set_ecr "forums/grouped_threads"
 end
 
 class ForumThreadsView < Amatista::BaseView

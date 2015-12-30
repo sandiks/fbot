@@ -1,4 +1,3 @@
-require "html/builder"
 require "amatista"
 require "pg"
 require "json"

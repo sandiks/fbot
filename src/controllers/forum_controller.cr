@@ -1,27 +1,38 @@
 class ForumsController < ApplicationController
   get "/" do
     mforums = Forum.main_forums
-    mforums_threads = Hash(Int32, Array({Int32, Int32, Int32, String})).new
+    mforums_threads = Hash(Int32, Array({Int32, Int32, Int32, String, Time, Int32})).new
 
     mforums.each do |mf|
       mfid = mf[0] as Int32
       grouped_forums = Forum.grouped_forums(mfid)
-      mforums_threads[mfid] = [] of {Int32, Int32, Int32, String}
+      mforums_threads[mfid] = [] of {Int32, Int32, Int32, String, Time, Int32}
 
       grouped_forums.each do |group|
         threads = Forum.site_threads(group[0], group[1], 3)
-        site_forum_threads = threads.map { |thr| {thr[0], thr[1], thr[2], thr[3]} }
-
-        if mforums_threads.has_key?(mfid)
-          mforums_threads[mfid] = mforums_threads[mf[0]] + site_forum_threads
-        else
-          mforums_threads[mfid] = site_forum_threads
-        end
+        # site_forum_threads = threads.map { |thr| {thr[0], thr[1], thr[2], thr[3], thr[4]} }
+        mforums_threads[mfid] = mforums_threads[mf[0]] + threads
       end
     end
-    respond_to(:html, GroupedForumsView.new(mforums, mforums_threads).set_view)
+    respond_to(:html, GroupedAllThreadsView.new(mforums, mforums_threads).set_view)
   end
 
+  get "/group/:gid" do |params|
+    gid = 0
+    unless params.empty?
+      gid = params["gid"]
+    end
+    site_group = Forum.main_forums
+    grouped_forums = Forum.grouped_forums(gid)
+    group_threads = [] of {Int32, Int32, Int32, String, Time, Int32}
+
+    grouped_forums.each do |group|
+      threads = Forum.site_threads(group[0], group[1], 20)
+      # site_forum_threads = threads.map { |thr| {thr[0], thr[1], thr[2], thr[3], thr[4]} }
+      group_threads = group_threads + threads
+    end
+    respond_to(:html, GroupedThreadsView.new(site_group, group_threads).set_view)
+  end
   get "/site/:sid/forums" do |params|
     unless params.empty?
       forums = Forum.site_forums(params["sid"])
