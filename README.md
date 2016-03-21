@@ -1,12 +1,11 @@
-# fbot-www Crystal-lang site with amatysta framework
+# 
 
- 
+fbot-www Crystal-lang site with amatysta framework
 
 ## Installation
 
-
-1) shards install
-2) crystal build run.cr
+1. shards install
+2. crystal build run.cr
 
 
 ## Usage
@@ -15,7 +14,7 @@ open browser with http://localhost:3000/
 
 ## Development
 
-you need install crystal package
+you need to install crystal package
 
 ## Contributing
 
